@@ -26,11 +26,8 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//get by ID
+//get by idea ID
 router.route('/:id').get((req, res) => {
-    // WaterComments.findById(req.params.id)
-    //     .then(item => res.json(item))
-    //     .catch(err => res.status(400).json('Error: ' + err));
     WaterComments.find({ ideaId: req.params.id})
     .then(comment => res.json(comment))
     .catch(err => res.status(400).json('Error: ' + err));
@@ -55,14 +52,6 @@ router.route('/updateWaterComment/:id').post((req, res) => {
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: ' + err));
-});
-
-//get comments by idea
-router.route('/getcomment/:id').post((req, res) => {
-    console.log('a', req.params.id);
-    // WaterComments.find({ ideaId: req.params.id})
-    // .then(comment => res.json(comment))
-    // .catch(err => res.status(400).json('Error: ' + err));
 });
 
 module.exports = router;
